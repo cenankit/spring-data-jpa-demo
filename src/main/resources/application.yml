@@ -1,4 +1,3 @@
-
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -9,9 +8,8 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
-
-
+  test:
+    database:
+      enabled: false  # Disable DB for tests if you prefer not to use a real DB in testing
 server:
   port: 9191
-  
-  
