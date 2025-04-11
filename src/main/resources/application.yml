@@ -1,15 +1,12 @@
 spring:
   datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/schooldb
     username: root
     password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
-    hibernate.ddl-auto: update
-    generate-ddl: true
-    show-sql: true
-  test:
-    database:
-      enabled: false  # Disable DB for tests if you prefer not to use a real DB in testing
-server:
-  port: 9191
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernate.dialect: org.hibernate.dialect.MySQL8Dialect  # Should be a string, not a sequence
