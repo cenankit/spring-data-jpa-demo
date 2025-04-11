@@ -18,24 +18,28 @@ import com.jpa.demo.entity.Connection;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ConnectionRepositoryTest {
 
-    @Autowired
-    ConnectionRepository connectionRepository;
-    Connection connection;
+	@Autowired
+	ConnectionRepository connectionRepository;
+	Connection connection;
 
-    @BeforeEach
-    void setup() {
-        connection = new Connection(1L, 12L, 2L, LocalDateTime.now(), "pending"); // Align connectionUserId with test
-        connectionRepository.save(connection);
-    }
+	@BeforeEach
+	void setup() {
 
-    @Test
-    void test_findByConnectionUserId() {
-        List<Connection> connList = connectionRepository.findByConnectionUserId(2L);
-        assertThat(connList.get(0).getConnectionUserId()).isEqualTo(2L); // Assert correctly
-    }
+		connection = new Connection(1L, 12L, 12L, LocalDateTime.now(), "pending");
+		connectionRepository.save(connection);
 
-    @AfterEach
-    void tearDown() {
-        connectionRepository.deleteAll();
-    }
+	}
+
+	@Test
+	void test_findByConnectionUserId() {
+
+		List<Connection> connList = connectionRepository.findByConnectionUserId(2L);
+		assertThat(connList.get(0)).isEqualTo(connection.getConnectionUserId());
+	}
+
+	@AfterEach
+	void tearDown() {
+
+	}
+
 }
