@@ -69,7 +69,7 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<build>
+	 <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -82,8 +82,22 @@
 						</exclude>
 					</excludes>
 				</configuration>
+				<executions>
+    <execution>
+        <id>default-test-run</id>
+        <phase>test</phase>
+        <goals>
+            <goal>test-run</goal>
+        </goals>
+        <configuration>
+            <skip>true</skip>
+        </configuration>
+    </execution>
+</executions>
+
 			</plugin>
 		</plugins>
 	</build>
 
-</project>
+</project> 
+
